@@ -2,8 +2,23 @@
 <html>
 <head>
 	<title>GIF Viewer</title>
-	<script type="text/javascript" src="https://github.com/TechnoBoy101/AnyFileViewer.com/blob/gh-pages/javascript.js">
-		
+	<script type="text/javascript" >
+		function display() {
+			// body...
+			let url = document.getElementById('input').value;
+			document.getElementById('iframe').src=url;
+			document.getElementById('iframe').style.display="block";
+		}
+		window.addEventListener('load', function() 
+		{
+			  document.querySelector('input[type="file"]').addEventListener('change', function() {
+			      if (this.files && this.files[0]) {
+			          var img = document.querySelector('iframe');  // $('img')[0]
+			          img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+			          img.onload = imageIsLoaded;
+			      }
+			  });
+			});
 	</script>
 </head>
 <body>
